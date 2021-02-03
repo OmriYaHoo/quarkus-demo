@@ -14,7 +14,7 @@ public class BookResource {
     @GET
     public List<Book> getBooks() {
 //        return  Book.findAll(Sort.by("title")).list();
-        return  Book.findAll().list();
+        return Book.findAll().list();
     }
 
     @GET

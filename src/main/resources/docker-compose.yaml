@@ -2,21 +2,22 @@ version: "3"
 volumes:
   postgres-data: null
 services:
-#  Create a service named db.
+  #  Create a service named db.
   db:
-#   Use the Docker Image postgres. This will pull the newest release.
+    restart: always
+    #   Use the Docker Image postgres. This will pull the newest release.
     image: "postgres"
-#   Give the container the name my_postgres. You can changes to something else.
+    #   Give the container the name my_postgres. You can changes to something else.
     container_name: "my_postgres"
-#   Setup the username, password, and database name. You can changes these values.
+    #   Setup the username, password, and database name. You can changes these values.
     environment:
       - POSTGRES_USER=omri
       - POSTGRES_PASSWORD=omri
-      - POSTGRES_DB=graphql-demo
-#   Maps port 54321 (localhost) to port 5432 on the container. You can change the ports to fix your needs.
+      - POSTGRES_DB=books
+    #   Maps port 54321 (localhost) to port 5432 on the container. You can change the ports to fix your needs.
     ports:
       - "5432:5432"
-#   Set a volume some that database is not lost after shutting down the container.
-#   I used the name postgres-data but you can changed it to something else.
+    #   Set a volume some that database is not lost after shutting down the container.
+    #   I used the name postgres-data but you can changed it to something else.
     volumes:
       - postgres-data:/var/lib/postgresql/data
